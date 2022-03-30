@@ -2,18 +2,16 @@ const user = {
   name: 'User',
   surname: 'Userenko',
   age: 42,
+  gender: 'male',
   address: {
-    country: {
-      europe: 'UA',
-    },
+    country: 'UA',
     city: 'ZP',
-  }
-}
+  },
+};
 
 const { name,
   surname: lastname,
-  address: { city, country: { europe } },
-  address
+  address: { city, country }
 } = user;
 
 
@@ -26,3 +24,19 @@ const tuple = ['test article',{ text: 'lorem', author: ''} ]
 const [title, articleData] = tuple;
 
 const {text, author} = articleData
+
+const fileterdUser1 = {
+    name: 'User',
+    surname: 'Userenko',
+    age: 42, 
+};
+
+const { address, ...filteredUser2 } = user;
+
+const [value1, value2, ...arr2] = arr;
+
+function printUserAddress({address: {country, city}}) {
+  return `Country: ${country}
+City: ${city}`
+
+}
