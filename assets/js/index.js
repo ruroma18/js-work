@@ -169,4 +169,18 @@ function addStr(number)  {
   return arr;
 }
 
+//try catch
+
+try {
+  console.log(1);
+
+  console.log(abc);
+
+  console.log(2);
+} catch (error) {
+  throw new RangeError('')
+} finally {
+  console.log('end')
+}
+
 
