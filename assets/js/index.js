@@ -1,15 +1,18 @@
-const mainBtn = document.getElementById('mainBtn');
+const btnUp = document.getElementById('btnUp');
+const btnNull = document.getElementById('btnNull') 
 
-const enterListener = () => {
-  alert('Не веси над душой.');
+let counter = 0;
+
+const counterSpan = document.querySelector('#counterSpan');
+
+const clickHandlerUp = () => {
+  counterSpan.innerText = ++counter;
 }
 
-const leaveListener = () => {
-  alert('Спасибо');
+const clickHandlerNull = () => {
+  counterSpan.innerText = counter = 0;
 }
 
-mainBtn.addEventListener('mouseover', enterListener); //add listener
+btnUp.addEventListener('click', clickHandlerUp);
+btnNull.addEventListener('click', clickHandlerNull);
 
-mainBtn.addEventListener('mouseleave', leaveListener);
-
-mainBtn.removeEventListener('mouseover', enterListener); //remove listener
