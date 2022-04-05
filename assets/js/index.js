@@ -1,18 +1,18 @@
-const btnUp = document.getElementById('btnUp');
-const btnNull = document.getElementById('btnNull') 
+const btn = document.getElementById('btn');
+const rootElem = document.getElementById('root');
 
-let counter = 0;
+function clickHandler() {
+  const messageText = prompt('Enter message');
 
-const counterSpan = document.querySelector('#counterSpan');
+  const textPar = document.createElement('p');
+  textPar.innerText = messageText;
 
-const clickHandlerUp = () => {
-  counterSpan.innerText = ++counter;
+  rootElem.append(textPar);
+  
+  textPar.addEventListener('click', () => {
+    textPar.remove();
+  })
 }
 
-const clickHandlerNull = () => {
-  counterSpan.innerText = counter = 0;
-}
-
-btnUp.addEventListener('click', clickHandlerUp);
-btnNull.addEventListener('click', clickHandlerNull);
+btn.addEventListener('click', clickHandler);
 
