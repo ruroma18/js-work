@@ -1,18 +1,14 @@
-const btn = document.getElementById('btn');
-const rootElem = document.getElementById('root');
+// function makeAdder(X) {
+//   let result = X;
 
-function clickHandler() {
-  const messageText = prompt('Enter message');
+//   function addY(Y) {
+//     result += Y;
+//     return result;
+//   }
 
-  const textPar = document.createElement('p');
-  textPar.innerText = messageText;
+//   return addY;
+// }
 
-  rootElem.append(textPar);
-  
-  textPar.addEventListener('click', () => {
-    textPar.remove();
-  })
-}
+const makeAdder = (x) => (y) => (x += y); //сокращённая фун-ция 
 
-btn.addEventListener('click', clickHandler);
-
+const adder = makeAdder(100);
