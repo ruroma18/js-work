@@ -1,14 +1,16 @@
-// function makeAdder(X) {
-//   let result = X;
+'use strict';
 
-//   function addY(Y) {
-//     result += Y;
-//     return result;
-//   }
+const btnOpen = document.querySelector('#btn1');
+const btnClose = document.querySelector('#btn2');
 
-//   return addY;
-// }
+const listener = (e) => {
+  const temp = btnOpen.textContent;
+  btnOpen.innerText = btnClose.textContent; 
+  btnClose.innerText = temp;
+}
 
-const makeAdder = (x) => (y) => (x += y); //сокращённая фун-ция 
 
-const adder = makeAdder(100);
+btnOpen.addEventListener('mouseover', listener);
+btnClose.addEventListener('mouseover', listener);
+
+
