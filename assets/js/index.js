@@ -1,9 +1,16 @@
 'use strict';
 
-const form = document.getElementById('login-form');
+const taskForm = document.getElementById('task-form');
+const taskList = document.getElementById('task-list');
+const todoTask = [];
+  
+const addTask = (e) => {
+  const {target: { elements } } = e;
+  e.preventDefault();
+  const listItem = document.createElement('li');
+  listItem.textContent = elements.text.value;
+  todoTask.push(elements.text.value);
+  taskList.append(listItem);
+};
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault(); //предотвращает стандартное поведение( в данном случае - обновление страницы)
-  e.stopPropagation(); //останавливает "всплытие"
-  console.log(e);
-})
+taskForm.addEventListener('submit', addTask);
