@@ -6,7 +6,7 @@ const todoState = [];
   
 const addTask = (e) => {
   e.preventDefault();
-  const {target: { elements } } = e;
+  const {target, target: { elements } } = e;
   const taskText = elements.task.value;
   
   todoState.push(taskText);
@@ -14,6 +14,8 @@ const addTask = (e) => {
   const listItem = document.createElement('li');
   listItem.textContent = taskText;
   todoList.append(listItem);
+
+  target.reset();
 };
 
 form.addEventListener('submit', addTask);
