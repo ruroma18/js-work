@@ -11,28 +11,34 @@ const addTask = (e) => {
 
   if (taskText) {
     todoState.push(taskText);
-
-    const listItem = document.createElement('li');
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'X';
-    deleteBtn.addEventListener('click', deleteHandler);
-
-    listItem.textContent = taskText;
-
-    listItem.append(deleteBtn);
-    todoList.append(listItem);
-  };
-  
-function deleteHandler(e) {
-  e.target.parentElement.remove();
-  
-  const index = todoState.indexOf(e.target.parentElement.firstChild.textContent);
-
-  todoState.splice(index, 1);
-}
-
+    todoList.append(createLiElement(taskText));
+  }
 
   target.reset();
+};
+
+
+function createLiElement(taskText) {
+  const listItem = document.createElement('li');
+  listItem.textContent = taskText;
+  listItem.append(createDeleteBtn());
+
+  return listItem;
+};
+
+function createDeleteBtn() {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'X';
+  deleteBtn.addEventListener('click', deleteHandler);
+
+  return deleteBtn;
+};
+
+
+function deleteHandler({ target: { parentElement } }) {
+  parentElement.remove();
+  const index = todoState.indexOf(parentElement.firstChild.textContent);
+  todoState.splice(index, 1);
 };
 
 form.addEventListener('submit', addTask);
