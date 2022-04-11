@@ -21,23 +21,25 @@ const addTask = (e) => {
 function createLiElement(taskText) {
   const listItem = document.createElement('li');
   listItem.textContent = taskText;
-  listItem.append(createDeleteBtn());
+  listItem.append(createDeleteBtn(deleteHandler.bind(), taskText));
 
   return listItem;
 };
 
-function createDeleteBtn() {
+function createDeleteBtn(onDelete, taskText) {
   const deleteBtn = document.createElement('button');
+  deleteBtn.setAttribute('data-value', taskText);
   deleteBtn.textContent = 'X';
-  deleteBtn.addEventListener('click', deleteHandler);
+  deleteBtn.addEventListener('click', onDelete);
 
   return deleteBtn;
 };
 
 
-function deleteHandler({ target: { parentElement } }) {
-  parentElement.remove();
-  const index = todoState.indexOf(parentElement.firstChild.textContent);
+function deleteHandler({ target: { dataset: { value } } }) {
+  this.remove();
+  const index = todoState.indexOf(value);
+
   todoState.splice(index, 1);
 };
 
