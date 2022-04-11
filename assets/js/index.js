@@ -1,16 +1,19 @@
 'use strict';
 
-const taskForm = document.getElementById('task-form');
-const taskList = document.getElementById('task-list');
-const todoTask = [];
+const form = document.getElementById('todo-form');
+const todoList = document.getElementById('todo-list');
+const todoState = [];
   
 const addTask = (e) => {
-  const {target: { elements } } = e;
   e.preventDefault();
+  const {target: { elements } } = e;
+  const taskText = elements.task.value;
+  
+  todoState.push(taskText);
+
   const listItem = document.createElement('li');
-  listItem.textContent = elements.text.value;
-  todoTask.push(elements.text.value);
-  taskList.append(listItem);
+  listItem.textContent = taskText;
+  todoList.append(listItem);
 };
 
-taskForm.addEventListener('submit', addTask);
+form.addEventListener('submit', addTask);
