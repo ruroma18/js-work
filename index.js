@@ -1,10 +1,12 @@
 'use strict';
 
-const importedModule = require('./MyMath.js')
+const fs = require('fs/promises');
 
-const { MyMath } = importedModule;
+const addText = 'Hello world!'
 
-console.log(importedModule);
-const result = MyMath.subtract(5, 40, -25);
+fs.writeFile('./task.txt', addText, { encoding: 'utf-8', flag: 'a+' })
+  .then((data) => data);
 
-console.log(result);
+fs.readFile('./task.txt', 'utf-8').then((data) =>
+  console.log(data)
+)
